@@ -1,0 +1,6 @@
+{
+  "name": "TetraFlow: Modern Arcade Blocks",
+  "description": "A high-performance, mobile-first block puzzle game with futuristic aesthetics and progressive difficulty peaks.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["pwa", "canvas", "web-audio"]
+}

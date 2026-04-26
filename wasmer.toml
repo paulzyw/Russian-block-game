@@ -1,0 +1,12 @@
+[package]
+name = "tetraflow-game"
+version = "1.0.0"
+description = "Modern arcade block puzzle game"
+license = "Apache-2.0"
+
+[[web]]
+name = "tetraflow"
+public = "dist"
+
+[build]
+command = "npm run build"
