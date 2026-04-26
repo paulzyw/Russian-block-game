@@ -16,9 +16,14 @@ export function MobileOverlay() {
   if (status !== GameStatus.PLAYING) return null;
 
   return (
-    <div className="absolute inset-0 z-20 pointer-events-none xl:hidden flex justify-between items-end p-6 pb-12 sm:pb-8">
-      {/* Left Side: Rotation */}
-      <div className="pointer-events-auto">
+    <div className="absolute inset-0 z-20 pointer-events-none xl:hidden flex justify-between items-end p-4 pb-10 sm:p-6 sm:pb-8">
+      {/* Left Side: Rotation & Hold */}
+      <div className="pointer-events-auto flex flex-col gap-4">
+        <TouchButton 
+          action="HOLD" 
+          icon={<div className="font-black italic text-xs">HOLD</div>} 
+          className="w-14 h-14 bg-neon-magenta/10 border-2 border-neon-magenta/40 text-neon-magenta"
+        />
         <TouchButton 
           action="ROTATE" 
           icon={<RotateCw size={32} />} 
@@ -27,32 +32,32 @@ export function MobileOverlay() {
       </div>
 
       {/* Right Side: Directional Cluster */}
-      <div className="pointer-events-auto flex flex-col items-center gap-2">
-        <div className="flex gap-2">
+      <div className="pointer-events-auto flex flex-col items-center gap-3">
+        <div className="flex gap-3">
           <TouchButton 
             action="MOVE_LEFT" 
-            icon={<ChevronLeft size={32} />} 
-            className="w-16 h-16 bg-white/5 border-2 border-white/10 text-white"
+            icon={<ChevronLeft size={36} />} 
+            className="w-20 h-20 bg-white/5 border-2 border-white/10 text-white"
             autoRepeat
           />
           <TouchButton 
             action="MOVE_RIGHT" 
-            icon={<ChevronRight size={32} />} 
-            className="w-16 h-16 bg-white/5 border-2 border-white/10 text-white"
+            icon={<ChevronRight size={36} />} 
+            className="w-20 h-20 bg-white/5 border-2 border-white/10 text-white"
             autoRepeat
           />
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3 w-full">
           <TouchButton 
             action="MOVE_DOWN" 
-            icon={<ChevronDown size={28} />} 
-            className="w-16 h-12 bg-white/5 border-2 border-white/10 text-white rounded-xl"
+            icon={<ChevronDown size={32} />} 
+            className="flex-1 h-14 bg-white/5 border-2 border-white/10 text-white rounded-2xl"
             autoRepeat
           />
           <TouchButton 
             action="HARD_DROP" 
-            icon={<ArrowDownToLine size={28} />} 
-            className="w-16 h-12 bg-neon-magenta/10 border-2 border-neon-magenta/40 text-neon-magenta glow-magenta rounded-xl"
+            icon={<ArrowDownToLine size={32} />} 
+            className="flex-1 h-14 bg-neon-magenta/10 border-2 border-neon-magenta/40 text-neon-magenta glow-magenta rounded-2xl"
           />
         </div>
       </div>

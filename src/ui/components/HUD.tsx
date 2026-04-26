@@ -11,9 +11,10 @@ import { clsx } from 'clsx';
 
 interface HUDProps {
   type: 'stats' | 'next' | 'hold';
+  compact?: boolean;
 }
 
-export function HUD({ type }: HUDProps) {
+export function HUD({ type, compact }: HUDProps) {
   const { score, lines, level, nextPiece, holdPiece, playerLevel, xp } = useGameStore();
 
   const xpProgress = (xp / (playerLevel * 1000)) * 100;
@@ -60,12 +61,29 @@ export function HUD({ type }: HUDProps) {
   }
 
   const piece = type === 'next' ? nextPiece : holdPiece;
-  const label = type === 'next' ? 'Next Cycle' : 'Hold Buffer';
+  const label = type === 'next' ? 'Next' : 'Hold';
   const accentColor = type === 'next' ? 'text-neon-cyan' : 'text-neon-magenta';
+
+  if (compact) {
+    return (
+      <div className="flex flex-col items-center gap-1">
+        <span className={clsx("text-[8px] font-black uppercase tracking-wider", accentColor)}>{label}</span>
+        <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center p-1">
+          {piece ? (
+             <div className="scale-75">
+               <PiecePreview piece={piece} />
+             </div>
+          ) : (
+            <div className="w-6 h-6 border border-dashed border-white/10 rounded" />
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-dark-surface border border-white/10 p-4 rounded-xl flex-1 relative overflow-hidden flex flex-col min-h-0">
-      <h3 className="text-label text-gray-400 mb-6">{label}</h3>
+      <h3 className="text-label text-gray-400 mb-6">{type === 'next' ? 'Next Cycle' : 'Hold Buffer'}</h3>
       <div className="flex-1 flex items-center justify-center min-h-[100px]">
         {piece ? (
           <div className="scale-150">

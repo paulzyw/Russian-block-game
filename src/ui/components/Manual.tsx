@@ -20,39 +20,39 @@ export function Manual({ onClose }: ManualProps) {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
-      className="bg-dark-surface/95 backdrop-blur-2xl border-2 border-white/20 rounded-2xl shadow-2xl p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto custom-scrollbar relative z-50"
+      className="bg-dark-surface/95 backdrop-blur-2xl border-2 border-white/20 rounded-2xl shadow-2xl p-4 sm:p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto custom-scrollbar relative z-50"
     >
       <button 
         onClick={onClose}
-        className="absolute top-4 right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
+        className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 hover:bg-white/10 rounded-full transition-colors"
       >
         <X size={20} className="text-gray-400" />
       </button>
 
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-black italic tracking-tighter text-white mb-2">OPERATIONS_MANUAL</h2>
-        <p className="text-[10px] uppercase tracking-[0.4em] text-neon-cyan opacity-70">Tactical Block Deployment Guide</p>
+      <div className="text-center mb-6 sm:mb-8">
+        <h2 className="text-xl sm:text-3xl font-black italic tracking-tighter text-white mb-2">OPERATIONS_MANUAL</h2>
+        <p className="text-[8px] sm:text-[10px] uppercase tracking-[0.4em] text-neon-cyan opacity-70">Tactical Block Deployment Guide</p>
       </div>
 
       {/* Switcher */}
-      <div className="flex gap-4 mb-8 justify-center">
+      <div className="flex gap-2 sm:gap-4 mb-6 sm:mb-8 justify-center">
         <button 
           onClick={() => setMode('desktop')}
           className={clsx(
-            "flex items-center gap-3 px-6 py-3 rounded-xl font-bold transition-all border",
+            "flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl text-[10px] sm:text-base font-bold transition-all border",
             mode === 'desktop' ? "bg-neon-cyan text-black border-neon-cyan glow-cyan" : "bg-white/5 text-gray-500 border-white/10"
           )}
         >
-          <Monitor size={18} /> DESKTOP
+          <Monitor size={16} className="sm:w-[18px]" /> DESKTOP
         </button>
         <button 
           onClick={() => setMode('mobile')}
           className={clsx(
-            "flex items-center gap-3 px-6 py-3 rounded-xl font-bold transition-all border",
+            "flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-lg sm:rounded-xl text-[10px] sm:text-base font-bold transition-all border",
             mode === 'mobile' ? "bg-neon-magenta text-black border-neon-magenta glow-magenta" : "bg-white/5 text-gray-500 border-white/10"
           )}
         >
-          <Smartphone size={18} /> MOBILE
+          <Smartphone size={16} className="sm:w-[18px]" /> MOBILE
         </button>
       </div>
 
